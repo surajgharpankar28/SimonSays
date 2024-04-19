@@ -1,3 +1,4 @@
+
 let gameSeq = [];
 let userSeq = [];
 let btns = ["red", "green", "blue", "yellow"];
@@ -7,6 +8,7 @@ let level = 0;
 
 let h3 = document.querySelector("h3");
 
+h3.innerText = `Press any Key to start`;
 let hightestScore = 0;
 
 document.addEventListener("keypress", function () {
