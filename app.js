@@ -1,4 +1,3 @@
-
 let gameSeq = [];
 let userSeq = [];
 let btns = ["red", "green", "blue", "yellow"];
