@@ -135,3 +135,7 @@ h3 {
 .wrongAns {
   background-color: red !important;
 }
+
+.borderWhite {
+  border: 2px solid white;
+}

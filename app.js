@@ -116,8 +116,10 @@ function btnPress() {
 function btnFlash(btn) {
   //   var btn = this;
   btn.classList.add("glow");
+  btn.classList.add("borderWhite");
   setTimeout(function () {
     btn.classList.remove("glow");
+    btn.classList.remove("borderWhite");
   }, 350); // Adjust the time as needed
 }
 
