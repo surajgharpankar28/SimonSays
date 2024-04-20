@@ -8,9 +8,9 @@ body {
 }
 
 .btn {
-  width: 8rem;
-  height: 8rem;
-  border-radius: 25%;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 10%;
   border: 5px solid black;
   margin-bottom: 1rem;
   margin-right: 1rem;
@@ -19,15 +19,19 @@ body {
 
 .red {
   background-color: red;
+  border-top-left-radius: 90%;
 }
 .green {
   background-color: green;
+  border-top-right-radius: 90%;
 }
 .blue {
   background-color: blue;
+  border-bottom-left-radius: 90%;
 }
 .yellow {
   background-color: yellow;
+  border-bottom-right-radius: 90%;
 }
 
 .btn:after {
@@ -45,10 +49,14 @@ body {
   box-shadow: 0 0 40px rgba(234, 6, 6, 0.5);
 }
 
-.btn.flash:after {
+.btn.glow:after {
   width: 4rem;
   height: 4rem;
   opacity: 0.8;
   /* Add box shadow */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+}
+
+.wrongAns {
+  background-color: red;
 }
