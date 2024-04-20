@@ -1,7 +1,33 @@
 body {
+  background-color: #212529 !important;
   text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+span {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.titleRed {
+  color: red;
+}
+.titleBlue {
+  color: blue;
+}
+.titleGreen {
+  color: green;
+}
+.titleYellow {
+  color: yellow;
+}
+.titleWhite {
+  color: white;
+}
 .btn-container {
   display: flex;
   justify-content: center;
@@ -57,5 +83,5 @@ body {
 }
 
 .wrongAns {
-  background-color: red;
+  background-color: red !important;
 }
