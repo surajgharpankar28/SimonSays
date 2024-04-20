@@ -1,36 +1,67 @@
 body {
+  background-color: #212529 !important;
   text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+span {
+  font-size: 4rem;
+  font-weight: bold;
+}
+h3 {
+  color: white;
+}
+.titleRed {
+  color: red;
+}
+.titleBlue {
+  color: blue;
+}
+.titleGreen {
+  color: green;
+}
+.titleYellow {
+  color: yellow;
+}
+.titleWhite {
+  color: white;
+}
 .btn-container {
   display: flex;
   justify-content: center;
 }
 
-.btn {
+.mybtn {
   width: 8rem;
   height: 8rem;
-  border-radius: 25%;
+  border-radius: 10%;
   border: 5px solid black;
-  margin-bottom: 1rem;
-  margin-right: 1rem;
+  margin: 0.5rem;
   position: relative; /* Ensure proper positioning of pseudo-element */
 }
 
 .red {
   background-color: red;
+  border-top-left-radius: 90%;
 }
 .green {
   background-color: green;
+  border-top-right-radius: 90%;
 }
 .blue {
   background-color: blue;
+  border-bottom-left-radius: 90%;
 }
 .yellow {
   background-color: yellow;
+  border-bottom-right-radius: 90%;
 }
 
-.btn:after {
+.mybtn:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -45,10 +76,14 @@ body {
   box-shadow: 0 0 40px rgba(234, 6, 6, 0.5);
 }
 
-.btn.flash:after {
+.mybtn.glow:after {
   width: 4rem;
   height: 4rem;
   opacity: 0.8;
   /* Add box shadow */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+}
+
+.wrongAns {
+  background-color: red !important;
 }

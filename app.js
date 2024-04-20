@@ -7,17 +7,37 @@ let level = 0;
 
 let h3 = document.querySelector("h3");
 
-h3.innerText = `Press any Key to start`;
+h3.innerText = ``;
 let hightestScore = 0;
 
-document.addEventListener("keypress", function () {
-  if (gameStarted == false) {
-    console.log("Game Started");
-    gameStarted = true;
-    levelUp();
-  }
-});
+let gameStartBtn = document.querySelector("#gameStart");
 
+// Start or stop the game
+gameStartBtn.addEventListener("click", toggleGame);
+
+function toggleGame() {
+  if (!gameStarted) {
+    startGame();
+  } else {
+    stopGame();
+  }
+}
+
+// Start the game
+function startGame() {
+  gameStarted = true;
+  levelUp();
+  gameStartBtn.innerText = "Stop Game";
+}
+
+// Stop the game
+function stopGame() {
+  gameStarted = false;
+  resetGame();
+  h3.innerText = "";
+}
+
+// Function to handle level progression
 function levelUp() {
   userSeq = [];
   level++;
@@ -25,27 +45,39 @@ function levelUp() {
   let randIdx = Math.floor(Math.random() * 4);
   let randColor = btns[randIdx];
   let randBtn = document.querySelector(`.${randColor}`);
-  btnFlash(randBtn);
+  setTimeout(btnFlash(randBtn), 250);
   gameSeq.push(randColor);
   console.log(`GAME ${gameSeq}`);
 }
 
-let allBtns = document.querySelectorAll(".btn");
+// Handle button click
+let allBtns = document.querySelectorAll(".mybtn");
 
 for (btn of allBtns) {
   btn.addEventListener("click", btnPress);
 }
 
+//Flash red on wrong answer
+let body = document.querySelector("body");
+function wrongAns() {
+  body.classList.add("wrongAns");
+  setTimeout(function () {
+    body.classList.remove("wrongAns");
+  }, 350);
+}
+
+// Check user's answer
 function checkAns(idx) {
   console.log("Current Level : ", level);
 
   if (userSeq[idx] === gameSeq[idx]) {
     if (userSeq.length == gameSeq.length) {
       console.log("Same");
-      setTimeout(levelUp, 1000);
+      setTimeout(levelUp, 200);
     }
   } else {
-    h3.innerHTML = `Game Over! Your score was <b>${level}</b> <br> Press any key to Start`;
+    wrongAns();
+    h3.innerHTML = `Game Over! Your score was <b>${level}</b>`;
     if (level > hightestScore && level > 0) {
       hightestScore = level;
       document.querySelector(
@@ -53,15 +85,21 @@ function checkAns(idx) {
       ).innerText = `Hightest Score is : ${hightestScore}`;
     }
 
-    setTimeout(resetGame, 1000);
+    setTimeout(resetGame, 300);
   }
 }
+
+// Reset the game state
 function resetGame() {
   gameStarted = false;
   gameSeq = [];
   userSeq = [];
   level = 0;
+
+  gameStartBtn.innerText = "Start Game";
 }
+
+// Handle button press
 function btnPress() {
   if (gameStarted == true) {
     console.log("Btn Pressed");
@@ -74,10 +112,11 @@ function btnPress() {
   }
 }
 
+// Add glow effect to button
 function btnFlash(btn) {
   //   var btn = this;
-  btn.classList.add("flash");
+  btn.classList.add("glow");
   setTimeout(function () {
-    btn.classList.remove("flash");
+    btn.classList.remove("glow");
   }, 350); // Adjust the time as needed
 }
