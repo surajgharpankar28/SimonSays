@@ -7,13 +7,12 @@ body {
   justify-content: center;
 }
 
-.btn {
+.mybtn {
   width: 8rem;
   height: 8rem;
   border-radius: 10%;
   border: 5px solid black;
-  margin-bottom: 1rem;
-  margin-right: 1rem;
+  margin: 0.5rem;
   position: relative; /* Ensure proper positioning of pseudo-element */
 }
 
@@ -34,7 +33,7 @@ body {
   border-bottom-right-radius: 90%;
 }
 
-.btn:after {
+.mybtn:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -49,7 +48,7 @@ body {
   box-shadow: 0 0 40px rgba(234, 6, 6, 0.5);
 }
 
-.btn.glow:after {
+.mybtn.glow:after {
   width: 4rem;
   height: 4rem;
   opacity: 0.8;

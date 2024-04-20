@@ -51,7 +51,7 @@ function levelUp() {
 }
 
 // Handle button click
-let allBtns = document.querySelectorAll(".btn");
+let allBtns = document.querySelectorAll(".mybtn");
 
 for (btn of allBtns) {
   btn.addEventListener("click", btnPress);
