@@ -12,7 +12,9 @@ span {
   font-size: 4rem;
   font-weight: bold;
 }
-
+h3 {
+  color: white;
+}
 .titleRed {
   color: red;
 }
