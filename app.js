@@ -120,3 +120,18 @@ function btnFlash(btn) {
     btn.classList.remove("glow");
   }, 350); // Adjust the time as needed
 }
+
+// Add this within your existing JavaScript code
+
+let howToPlayBtn = document.querySelector("#howToPlayBtn");
+let popupContainer = document.querySelector("#popupContainer");
+
+howToPlayBtn.addEventListener("click", openPopup);
+
+function openPopup() {
+  popupContainer.style.display = "block";
+}
+
+function closePopup() {
+  popupContainer.style.display = "none";
+}
