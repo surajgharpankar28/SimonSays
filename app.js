@@ -6,11 +6,15 @@ let gameStarted = false;
 let level = 0;
 
 let h3 = document.querySelector("h3");
+let hightestScore = localStorage.getItem("highestScore") || 0; // Retrieve highest score from localStorage
 
 h3.innerText = ``;
-let hightestScore = 0;
-
 let gameStartBtn = document.querySelector("#gameStart");
+
+// Display the highest score
+document.querySelector(
+  "#hightestScore"
+).innerText = `Highest Score: ${hightestScore}`;
 
 // Start or stop the game
 gameStartBtn.addEventListener("click", toggleGame);
@@ -45,7 +49,7 @@ function levelUp() {
   let randIdx = Math.floor(Math.random() * 4);
   let randColor = btns[randIdx];
   let randBtn = document.querySelector(`.${randColor}`);
-  setTimeout(btnFlash(randBtn), 250);
+  setTimeout(() => btnFlash(randBtn), 250); // Ensure the function is called properly
   gameSeq.push(randColor);
   console.log(`GAME ${gameSeq}`);
 }
@@ -57,7 +61,7 @@ for (btn of allBtns) {
   btn.addEventListener("click", btnPress);
 }
 
-//Flash red on wrong answer
+// Flash red on wrong answer
 let body = document.querySelector("body");
 function wrongAns() {
   body.classList.add("wrongAns");
@@ -68,21 +72,23 @@ function wrongAns() {
 
 // Check user's answer
 function checkAns(idx) {
-  console.log("Current Level : ", level);
+  console.log("Current Level: ", level);
 
   if (userSeq[idx] === gameSeq[idx]) {
-    if (userSeq.length == gameSeq.length) {
+    if (userSeq.length === gameSeq.length) {
       console.log("Same");
       setTimeout(levelUp, 200);
     }
   } else {
     wrongAns();
     h3.innerHTML = `Game Over! Your score was <b>${level}</b>`;
+    // Update highest score if necessary
     if (level > hightestScore && level > 0) {
       hightestScore = level;
+      localStorage.setItem("highestScore", hightestScore); // Save the new highest score in localStorage
       document.querySelector(
         "#hightestScore"
-      ).innerText = `Hightest Score is : ${hightestScore}`;
+      ).innerText = `Highest Score: ${hightestScore}`; // Update the displayed highest score
     }
 
     setTimeout(resetGame, 300);
@@ -105,7 +111,7 @@ function btnPress() {
     console.log("Btn Pressed");
     btnFlash(this);
 
-    userBtn = this.getAttribute("value");
+    let userBtn = this.getAttribute("value");
     userSeq.push(userBtn);
     console.log(`USER ${userSeq}`);
     checkAns(userSeq.length - 1);
@@ -114,17 +120,15 @@ function btnPress() {
 
 // Add glow effect to button
 function btnFlash(btn) {
-  //   var btn = this;
   btn.classList.add("glow");
   btn.classList.add("borderWhite");
   setTimeout(function () {
     btn.classList.remove("glow");
     btn.classList.remove("borderWhite");
-  }, 350); // Adjust the time as needed
+  }, 350);
 }
 
 // Add this within your existing JavaScript code
-
 let howToPlayBtn = document.querySelector("#howToPlayBtn");
 let popupContainer = document.querySelector("#popupContainer");
 
